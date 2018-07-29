@@ -1,9 +1,10 @@
 from django.contrib import admin
-from django.urls import path, re_path
+from django.conf.urls import url,include
 from .import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    re_path(r'^about/$', views.about),
-    re_path(r'^$', views.homepage),
+    url('admin/', admin.site.urls),
+    url(r'^articles/', include('articles.urls')),
+    url(r'^about/$', views.about),
+    url(r'^$', views.homepage),
 ]
