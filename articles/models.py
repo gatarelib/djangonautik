@@ -13,3 +13,6 @@ class Article(models.Model):
 #Indentation should be according to class, therefore it should be inside the class function otherwise it won't work
     def __str__(self): 
         return self.title
+    
+    def snippet(self):
+        return self.body[:50] + "...."
