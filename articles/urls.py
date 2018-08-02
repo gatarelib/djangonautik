@@ -4,4 +4,5 @@ from .import views
 urlpatterns = [
     url(r'^$', views.article_list, name="list"),
     url(r'^(?P<slug>[\w-]+)/$', views.article_detail, name="detail"),   
+    url(r'^hello-view/', views.HellloApiView.as_view())
 ]
