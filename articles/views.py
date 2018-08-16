@@ -9,8 +9,11 @@ from rest_framework.response import Response
 def article_list(request):
     articles = Article.objects.all().order_by('date')
     return render(request, 'articles/article_list.html', {'articles':articles})
+
 def article_detail(request, slug):
-    return HttpResponse(slug)
+    # return HttpResponse(slug)
+    article = Article.objects.get(slug=slug)
+    return render(request, 'articles/article_detail.html', {'article': article})
 
 class HellloApiView(APIView):
     """Test API View """
@@ -23,7 +26,6 @@ class HellloApiView(APIView):
             'It is similar to a traditional Django view',
             'Gives you the most control over your logic',
             'Is mapped manually to URLs'
-
         ]
 
         return Response({'message': 'Hello', 'an_apiview': an_apiview})
